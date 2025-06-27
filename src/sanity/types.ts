@@ -38,6 +38,7 @@ export type Content = {
     _type: "heroWork";
     _key: string;
   }>;
+  nossaHistoriaTitle?: string;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -162,20 +163,21 @@ export type AllSanitySchemaTypes = Content | SanityImagePaletteSwatch | SanityIm
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: CONTENT_QUERY
-// Query: *[_type == "content"]{  heroTitle,  heroDescription,  "heroWorks": heroWorks[]{    "image": image.asset._ref,    "title": coalesce(title, "")  }}
+// Query: *[_type == "content"]{  heroTitle,  heroDescription,  heroWorks[]{    "image": image.asset._ref,    title  },nossaHistoriaTitle}
 export type CONTENT_QUERYResult = Array<{
   heroTitle: string | null;
   heroDescription: string | null;
   heroWorks: Array<{
     image: string | null;
-    title: string | "";
+    title: string | null;
   }> | null;
+  nossaHistoriaTitle: string | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n*[_type == \"content\"]{\n  heroTitle,\n  heroDescription,\n  \"heroWorks\": heroWorks[]{\n    \"image\": image.asset._ref,\n    \"title\": coalesce(title, \"\")\n  }\n}\n": CONTENT_QUERYResult;
+    "\n*[_type == \"content\"]{\n  heroTitle,\n  heroDescription,\n  heroWorks[]{\n    \"image\": image.asset._ref,\n    title\n  },\nnossaHistoriaTitle\n}\n": CONTENT_QUERYResult;
   }
 }

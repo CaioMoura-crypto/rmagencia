@@ -4,9 +4,10 @@ export const CONTENT_QUERY = defineQuery(`
 *[_type == "content"]{
   heroTitle,
   heroDescription,
-  "heroWorks": heroWorks[]{
+  heroWorks[]{
     "image": image.asset._ref,
-    "title": coalesce(title, "")
-  }
+    title
+  },
+nossaHistoriaTitle
 }
 `);

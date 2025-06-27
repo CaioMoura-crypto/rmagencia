@@ -10,18 +10,23 @@ import {
 import { Image } from "next-sanity/image";
 import { urlFor } from "@/sanity/lib/image";
 
-export const Hero = ({
-  works,
-  heroTitle,
-  heroDescription,
-}: {
-  heroTitle: string;
-  heroDescription: string;
-  works: {
-    title: string;
-    image: string | null;
-  }[];
-}) => {
+type Work = {
+  title: string | null;
+  image: string | null;
+};
+
+interface HeroProps {
+  heroTitle: string | null;
+  heroDescription: string | null;
+  works: Work[];
+}
+
+interface WorkCardProps {
+  work: Work;
+  translate: MotionValue<number>;
+}
+
+export const Hero = ({ works, heroTitle, heroDescription }: HeroProps) => {
   const firstRow = works.slice(0, 5);
   const secondRow = works.slice(5, 10);
   const thirdRow = works.slice(10, 15);
@@ -62,7 +67,7 @@ export const Hero = ({
       ref={ref}
       className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
-      <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
+      <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
         <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
           {heroTitle}
         </h1>
@@ -80,22 +85,18 @@ export const Hero = ({
         className=""
       >
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((work) => (
-            <WorkCard work={work} translate={translateX} key={work.title} />
+          {firstRow.map((work, index) => (
+            <WorkCard work={work} translate={translateX} />
           ))}
         </motion.div>
         <motion.div className="flex flex-row  mb-20 space-x-20 ">
-          {secondRow.map((work) => (
-            <WorkCard
-              work={work}
-              translate={translateXReverse}
-              key={work.title}
-            />
+          {secondRow.map((work, index) => (
+            <WorkCard work={work} translate={translateXReverse} />
           ))}
         </motion.div>
         <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((work) => (
-            <WorkCard work={work} translate={translateX} key={work.title} />
+          {thirdRow.map((work, index) => (
+            <WorkCard work={work} translate={translateX} />
           ))}
         </motion.div>
       </motion.div>
@@ -103,16 +104,7 @@ export const Hero = ({
   );
 };
 
-export const WorkCard = ({
-  work,
-  translate,
-}: {
-  work: {
-    title: string;
-    image: string;
-  };
-  translate: MotionValue<number>;
-}) => {
+export const WorkCard = ({ work, translate }: WorkCardProps) => {
   return (
     <motion.div
       style={{
@@ -125,13 +117,14 @@ export const WorkCard = ({
       className="group/work h-96 w-[30rem] relative shrink-0"
     >
       <div className="block group-hover/work:shadow-2xl ">
-        <Image
-          src={urlFor(work.image)}
-          height="600"
-          width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
-          alt={work.title}
-        />
+        {work.image && (
+          <Image
+            src={urlFor(work.image).url()}
+            fill={true}
+            className="object-cover object-left-top absolute h-full w-full inset-0"
+            alt={work.title!}
+          />
+        )}
       </div>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/work:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/work:opacity-100 text-white">

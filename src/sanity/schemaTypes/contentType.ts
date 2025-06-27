@@ -41,5 +41,10 @@ export const contentType = defineType({
       ],
       validation: (rule) => rule.required().min(1).max(16),
     }),
+    defineField({
+      name: "nossaHistoriaTitle",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
   ],
 });

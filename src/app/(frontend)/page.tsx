@@ -1,8 +1,9 @@
 import { CONTENT_QUERY } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 import { Hero } from "@/components/hero";
+import { NossaHistoria } from "@/components/nossa-historia";
 
-const options = { next: { revalidate: 60 } };
+const options = { next: { revalidate: 0 } };
 
 export default async function Page() {
   const content = await client.fetch(CONTENT_QUERY, {}, options);
@@ -23,6 +24,11 @@ export default async function Page() {
             heroDescription={content[0].heroDescription}
           />
         )}
+      {
+        content[0].nossaHistoriaTitle && (
+          <NossaHistoria nossaHistoriaTitle={content[0].nossaHistoriaTitle} />
+        )
+      }
     </main>
   );
 }
