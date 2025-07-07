@@ -2,6 +2,7 @@ import { CONTENT_QUERY } from "@/sanity/lib/queries"
 import { client } from "@/sanity/lib/client"
 import { Hero } from "@/components/hero"
 import { NossaHistoria } from "@/components/nossa-historia"
+import { Services } from "@/components/services"
 
 const options = { next: { revalidate: 0 } }
 
@@ -22,9 +23,15 @@ export default async function Page() {
           heroDescription={content[0].heroDescription}
         />
       )}
-      {content[0].nossaHistoriaTitle && (
-        <NossaHistoria nossaHistoriaTitle={content[0].nossaHistoriaTitle} />
+      {content[0].nossaHistoriaTitle && content[0].nossaHistoriaDescription && (
+        <NossaHistoria nossaHistoriaTitle={content[0].nossaHistoriaTitle} 
+        nossaHistoriaDescription={content[0].nossaHistoriaDescription}
+        />
+          
       )}
+
+      {content[0].services && (<Services services={content[0].services}/>)}
+
     </main>
   )
 }

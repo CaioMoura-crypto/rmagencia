@@ -39,6 +39,19 @@ export type Content = {
     _key: string;
   }>;
   nossaHistoriaTitle?: string;
+  nossaHistoriaDescription?: string;
+  services?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type SanityImagePaletteSwatch = {

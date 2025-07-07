@@ -46,5 +46,18 @@ export const contentType = defineType({
       type: "string",
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: "nossaHistoriaDescription",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+      defineField({
+        name: "services",
+        type: "image",
+        options: {
+        hotspot: true,
+        },
+        validation: (rule) => rule.required(),
+        }),
   ],
 });
