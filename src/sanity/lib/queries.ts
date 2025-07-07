@@ -10,6 +10,9 @@ export const CONTENT_QUERY = defineQuery(`
   },
 nossaHistoriaTitle,
 nossaHistoriaDescription,
-"services": services.asset._ref
+  services[]{
+    "image": image.asset._ref,
+    title
+  }
 }
 `);

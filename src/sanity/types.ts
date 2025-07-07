@@ -40,18 +40,23 @@ export type Content = {
   }>;
   nossaHistoriaTitle?: string;
   nossaHistoriaDescription?: string;
-  services?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  services?: Array<{
+    title?: string;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
     };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
+    _type: "servicesItem";
+    _key: string;
+  }>;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -176,7 +181,7 @@ export type AllSanitySchemaTypes = Content | SanityImagePaletteSwatch | SanityIm
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: CONTENT_QUERY
-// Query: *[_type == "content"]{  heroTitle,  heroDescription,  heroWorks[]{    "image": image.asset._ref,    title  },nossaHistoriaTitle}
+// Query: *[_type == "content"]{  heroTitle,  heroDescription,  heroWorks[]{    "image": image.asset._ref,    title  },nossaHistoriaTitle,nossaHistoriaDescription,  services[]{    "image": image.asset._ref,    title  }}
 export type CONTENT_QUERYResult = Array<{
   heroTitle: string | null;
   heroDescription: string | null;
@@ -185,12 +190,17 @@ export type CONTENT_QUERYResult = Array<{
     title: string | null;
   }> | null;
   nossaHistoriaTitle: string | null;
+  nossaHistoriaDescription: string | null;
+  services: Array<{
+    image: string | null;
+    title: string | null;
+  }> | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n*[_type == \"content\"]{\n  heroTitle,\n  heroDescription,\n  heroWorks[]{\n    \"image\": image.asset._ref,\n    title\n  },\nnossaHistoriaTitle\n}\n": CONTENT_QUERYResult;
+    "\n*[_type == \"content\"]{\n  heroTitle,\n  heroDescription,\n  heroWorks[]{\n    \"image\": image.asset._ref,\n    title\n  },\nnossaHistoriaTitle,\nnossaHistoriaDescription,\n  services[]{\n    \"image\": image.asset._ref,\n    title\n  }\n}\n": CONTENT_QUERYResult;
   }
 }

@@ -1,8 +1,13 @@
 import { urlFor } from "@/sanity/lib/image";
 import { Image } from "next-sanity/image";
 
+type Service = {
+  title: string | null
+  image: string | null
+}
+
 interface ServicesProps {
-  services: string | null
+  services: Service[] | null
 }
 
 export const Services = ({ services }: ServicesProps) => {
