@@ -52,6 +52,14 @@ export const contentType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "nossaHistoriaImage",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: "services",
       type: "array",
       of: [
