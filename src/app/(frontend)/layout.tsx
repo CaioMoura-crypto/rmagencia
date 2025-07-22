@@ -16,7 +16,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggle />
+          <div className="container">
+            <ModeToggle />
+          </div>
           {children}
         </ThemeProvider>
       </body>
