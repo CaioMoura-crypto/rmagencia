@@ -85,5 +85,41 @@ export const contentType = defineType({
       ],
       validation: (rule) => rule.required().min(1),
     }),
+
+    defineField({
+      name: "LogoContact",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      validation: (rule) => rule.required(),
+    }),
+
+    defineField({
+      name: "contact",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "contactItem",
+          fields: [
+            defineField({
+              name: "contactTitle",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "ContactImage",
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+              validation: (rule) => rule.required(),
+            }),
+          ],
+        },
+      ],
+      validation: (rule) => rule.required().min(1),
+    }),
   ],
 });

@@ -11,9 +11,11 @@ export const CONTENT_QUERY = defineQuery(`
   nossaHistoriaTitle,  
   nossaHistoriaDescription,
   "nossaHistoriaImage": nossaHistoriaImage.asset._ref,
-   services[]{
+  services[]{
     title,
-    "image": image.asset._ref,
-    }
+    "image": image.asset._ref
+  },
+  contactTitle,
+  "contactImage": contactImage.asset._ref
 }
 `);

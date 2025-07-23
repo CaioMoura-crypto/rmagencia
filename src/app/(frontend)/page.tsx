@@ -3,6 +3,7 @@ import { client } from "@/sanity/lib/client";
 import { Hero } from "@/components/hero";
 import { NossaHistoria } from "@/components/nossa-historia";
 import { Services } from "@/components/services";
+import { Contact } from "@/components/contact";
 
 const options = { next: { revalidate: 0 } };
 
@@ -36,6 +37,14 @@ export default async function Page() {
         )}
 
       {content[0].services && <Services services={content[0].services} />}
+
+      {content[0].contactTitle && 
+        content[0].contactImage && (
+          <Contact
+            contactTitle={content[0].contactTitle}
+            contactImage={content[0].contactImage}
+        />
+      )}
     </main>
   );
-}
+};
