@@ -15,7 +15,7 @@ export default async function Page() {
     return <div>No content found</div>;
   }
 
-  return (
+  return ( 
     <main className="container mx-auto flex flex-col">
       {content[0].heroWorks &&
         content[0].heroTitle &&
@@ -38,11 +38,11 @@ export default async function Page() {
 
       {content[0].services && <Services services={content[0].services} />}
 
-      {content[0].contactTitle && 
-        content[0].contactImage && (
+      {content[0].contact && 
+      content[0].logoContact && (
           <Contact
-            contactTitle={content[0].contactTitle}
-            contactImage={content[0].contactImage}
+            contact={content[0].contact}
+            logoContact={content[0].logoContact}
         />
       )}
     </main>

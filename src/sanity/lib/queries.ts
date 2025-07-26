@@ -15,7 +15,12 @@ export const CONTENT_QUERY = defineQuery(`
     title,
     "image": image.asset._ref
   },
-  contactTitle,
-  "contactImage": contactImage.asset._ref
+
+"logoContact": LogoContact.asset._ref,
+
+  contact[]{
+    contactTitle,
+    "image": ContactImage.asset._ref
+  }
 }
-`);
+`); 

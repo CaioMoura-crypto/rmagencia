@@ -3,32 +3,39 @@ import { Image } from "next-sanity/image";
 
 
 type Contact = {
-  title: string | null;
+  contactTitle: string | null;
   image: string | null;
 };
+type ContactProps = {
+  contact: Contact[];
+  logoContact: string | null;
+};
 
-interface ContactProps {
-  contactTitle: string | null;
-  contactImage: string | null;
-}
-
-export const Contact = ({
-  contactTitle,
-  contactImage,
-}: ContactProps) => {
+export const Contact = ({ contact , logoContact}: ContactProps) => {
   return (
-    <div className="flex flex-col size-full px-5">
-      <h2 className="text-2xl md:text-4xl font-bold dark:text-white mb-10 uppercase text-center">
-        {contactTitle}
+    <div className ="flex flex-col size-full px-5 pt-20 pb-30">
+      <Image
+        src={urlFor(logoContact!).url()}
+        width={1000}
+        height={200}
+        className="mx-auto mb-30"
+        alt="logo de contato"
+      />
+      <h2 className="text-2xl md:text-4xl font-bold dark:text-white mb-10 uppercase">
       </h2>
-      {contactImage && (
-        <Image
-          src={urlFor(contactImage).url()}
-          width={80}
-          height={80}
-          alt="Contact Image"
-        />
-      )}
+      {contact && contact.map((contact, index) => (
+        <div className="flex items-center justify-between " key={index}>
+            <Image
+              src={urlFor(contact.image!).url()}
+              width={80}
+              height={80}
+              className=""
+              alt="foto do serviço"
+            />
+            <p className={"font-bold"}>{contact.contactTitle}</p>
+          </div>
+
+      ))}
     </div>
   );
 }

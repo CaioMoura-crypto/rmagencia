@@ -222,7 +222,7 @@ export type AllSanitySchemaTypes = Content | SanityImagePaletteSwatch | SanityIm
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: CONTENT_QUERY
-// Query: *[_type == "content"]{  heroTitle,  heroDescription,  heroWorks[]{    "image": image.asset._ref,    title  },  nossaHistoriaTitle,    nossaHistoriaDescription,  "nossaHistoriaImage": nossaHistoriaImage.asset._ref,  services[]{    title,    "image": image.asset._ref  },  contactTitle,  "contactImage": contactImage.asset._ref}
+// Query: *[_type == "content"]{  heroTitle,  heroDescription,  heroWorks[]{    "image": image.asset._ref,    title  },  nossaHistoriaTitle,    nossaHistoriaDescription,  "nossaHistoriaImage": nossaHistoriaImage.asset._ref,  services[]{    title,    "image": image.asset._ref  },"logoContact": LogoContact.asset._ref,  contact[]{    contactTitle,    "image": ContactImage.asset._ref  }}
 export type CONTENT_QUERYResult = Array<{
   heroTitle: string | null;
   heroDescription: string | null;
@@ -237,14 +237,17 @@ export type CONTENT_QUERYResult = Array<{
     title: string | null;
     image: string | null;
   }> | null;
-  contactTitle: null;
-  contactImage: null;
+  logoContact: string | null;
+  contact: Array<{
+    contactTitle: string | null;
+    image: string | null;
+  }> | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n*[_type == \"content\"]{\n  heroTitle,\n  heroDescription,\n  heroWorks[]{\n    \"image\": image.asset._ref,\n    title\n  },\n  nossaHistoriaTitle,  \n  nossaHistoriaDescription,\n  \"nossaHistoriaImage\": nossaHistoriaImage.asset._ref,\n  services[]{\n    title,\n    \"image\": image.asset._ref\n  },\n  contactTitle,\n  \"contactImage\": contactImage.asset._ref\n}\n": CONTENT_QUERYResult;
+    "\n*[_type == \"content\"]{\n  heroTitle,\n  heroDescription,\n  heroWorks[]{\n    \"image\": image.asset._ref,\n    title\n  },\n  nossaHistoriaTitle,  \n  nossaHistoriaDescription,\n  \"nossaHistoriaImage\": nossaHistoriaImage.asset._ref,\n  services[]{\n    title,\n    \"image\": image.asset._ref\n  },\n\n\"logoContact\": LogoContact.asset._ref,\n\n  contact[]{\n    contactTitle,\n    \"image\": ContactImage.asset._ref\n  }\n}\n": CONTENT_QUERYResult;
   }
 }
