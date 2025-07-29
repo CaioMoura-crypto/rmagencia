@@ -13,12 +13,14 @@ export const NossaHistoria = ({
   nossaHistoriaImage,
 }: NossaHistoriaProps) => {
   return (
-    <div className="w-full flex md:flex-row flex-col items-center justify-center gap-10 text-center mb-24">
+    <div
+      className="w-full flex md:flex-row flex-col items-center justify-center gap-10 text-center -mt-[90vh]"
+    >
       <div className={"flex-1/2"}>
         <h2 className="text-2xl md:text-4xl font-bold dark:text-white mb-10 uppercase">
           {nossaHistoriaTitle}
         </h2>
-        <p className="text-pretty text-xl px-5"> {nossaHistoriaDescription}</p>
+        <p className="text-pretty text-2xl px-5 font-semibold">{nossaHistoriaDescription}</p>
       </div>
       <div className="flex-1/2 w-full h-full">
         {nossaHistoriaImage && (
@@ -35,3 +37,5 @@ export const NossaHistoria = ({
     </div>
   );
 };
+
+

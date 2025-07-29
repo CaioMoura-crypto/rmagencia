@@ -4,6 +4,7 @@ import { Hero } from "@/components/hero";
 import { NossaHistoria } from "@/components/nossa-historia";
 import { Services } from "@/components/services";
 import { Contact } from "@/components/contact";
+import { Partners } from "@/components/partners";
 
 const options = { next: { revalidate: 0 } };
 
@@ -45,6 +46,8 @@ export default async function Page() {
             logoContact={content[0].logoContact}
         />
       )}
+
+      {content[0].partners && <Partners partners={content[0].partners} />}
     </main>
   );
 };

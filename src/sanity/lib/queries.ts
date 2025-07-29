@@ -21,6 +21,9 @@ export const CONTENT_QUERY = defineQuery(`
   contact[]{
     contactTitle,
     "image": ContactImage.asset._ref
-  }
+},
+partnersTitle,
+  partners[]{
+    "partnersImage": partnersImage.asset._ref}
 }
 `); 

@@ -121,5 +121,34 @@ export const contentType = defineType({
       ],
       validation: (rule) => rule.required().min(1),
     }),
+
+    defineField({
+      name: "partnersTitle",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+
+
+    defineField({
+      name: "partners",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "partnersItem",
+          fields: [            
+            defineField({
+              name: "partnersImage",
+              type: "image",
+              options: {
+                hotspot: true,
+              },
+              validation: (rule) => rule.required(),
+            }),
+          ],
+        },
+      ],
+      validation: (rule) => rule.required().min(1),
+    }),
   ],
 });
