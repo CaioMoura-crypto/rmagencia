@@ -1,5 +1,6 @@
 import { urlFor } from "@/sanity/lib/image";
 import { Image } from "next-sanity/image";
+import Link from "next/link";
 
 type Contact = {
   contactTitle: string | null;
@@ -52,14 +53,14 @@ export const Contact = ({ contact, logoContact }: ContactProps) => {
             )}
 
             {contactItem.url ? (
-              <a
+              <Link
                 href={contactItem.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="dark:text-white hover:underline"
               >
                 {contactItem.contactTitle}
-              </a>
+              </Link>
             ) : (
               <p className="dark:text-white">{contactItem.contactTitle}</p>
             )}
