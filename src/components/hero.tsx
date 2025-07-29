@@ -51,11 +51,11 @@ export const Hero = ({ works, heroTitle, heroDescription }: HeroProps) => {
     <>
       <div
         ref={ref}
-        className="h-[300vh] pt-30 pb-0 mt-30 overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
+        className="h-[280vh] pt-30 pb-0 mt-30 right-0 overflow-hidden antialiased relative flex flex-col [perspective:1600px] [transform-style:preserve-3d]"
       >
-        <div className="max-w-7xl relative mx-auto py-20 md:py-35 px-6 w-full left-0 top-0">
+        <div className="max-w-7xl relative mx-auto py-20 md:py-35 px-4 w-full left-0 top-20">
           <h1 className="text-2xl md:text-7xl font-bold dark:text-white">{heroTitle}</h1>
-          <p className="max-w-2xl text-base font-semibold md:text-2xl mt-8 dark:text-neutral-200">
+          <p className="max-w-2xl text-base font-semibold md:text-2xl mt-0 dark:text-neutral-200">
             {heroDescription}
           </p>
         </div>
@@ -98,7 +98,7 @@ export const Hero = ({ works, heroTitle, heroDescription }: HeroProps) => {
             <img
               src={urlFor(works[expandedIndex].image!).url()}
               alt={works[expandedIndex].title ?? ""}
-              className="max-w-[90vw] max-h-[80vh] rounded-xl shadow-2xl"
+              className="max-w-[90vw] max-h-[90vh] rounded-xl shadow-2xl"
             />
 
             <button
@@ -139,7 +139,7 @@ export const WorkCard = ({ work, translate, onExpand }: WorkCardProps) => {
     <motion.div
       style={{ x: translate }}
       whileHover={{ y: -20 }}
-      className="group/work h-96 w-[30rem] relative shrink-0 cursor-pointer"
+      className="group/work h-90 w-[30rem] relative shrink-0 cursor-pointer"
       onClick={(e) => {
         e.stopPropagation();
         onExpand();

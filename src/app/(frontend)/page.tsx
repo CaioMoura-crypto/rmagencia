@@ -17,7 +17,8 @@ export default async function Page() {
   }
 
   return ( 
-    <main className="container mx-auto flex flex-col">
+    <main className="w-full max-w-[1700px] mx-auto px-4 flex flex-col">
+
       {content[0].heroWorks &&
         content[0].heroTitle &&
         content[0].heroDescription && (
