@@ -51,7 +51,7 @@ export const Hero = ({ works, heroTitle, heroDescription }: HeroProps) => {
     <>
       <div
         ref={ref}
-        className="h-[300vh] pt-20 pb-0 overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
+        className="h-[300vh] pt-30 pb-0 mt-30 overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d]"
       >
         <div className="max-w-7xl relative mx-auto py-20 md:py-35 px-6 w-full left-0 top-0">
           <h1 className="text-2xl md:text-7xl font-bold dark:text-white">{heroTitle}</h1>
