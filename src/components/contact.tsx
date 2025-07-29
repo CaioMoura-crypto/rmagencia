@@ -28,7 +28,7 @@ export const Contact = ({ contact, logoContact }: ContactProps) => {
   });
 
   return (
-    <div className="flex flex-col size-full px-5 pt-20 pb-10 mt-24">
+    <div className="flex flex-col size-full px-5 pt-20 pb-10 mt-16">
       {logoContact && (
         <Image
           src={urlFor(logoContact).url()}
@@ -45,8 +45,8 @@ export const Contact = ({ contact, logoContact }: ContactProps) => {
             {contactItem.image && (
               <Image
                 src={urlFor(contactItem.image).url()}
-                width={60}
-                height={60}
+                width={50}
+                height={50}
                 className="rounded"
                 alt="ícone de contato"
               />
