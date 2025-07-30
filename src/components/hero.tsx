@@ -51,10 +51,10 @@ export const Hero = ({ works, heroTitle, heroDescription }: HeroProps) => {
     <>
       <div
   ref={ref}
-  className="relative z-10 min-h-[130vh] pt-16 pb-40 overflow-x-hidden overflow-y-hidden antialiased flex flex-col px-2 w-full max-w-[90%] lg:max-w-[1400px] mx-auto"
+  className="relative z-10 min-h-[130vh] pt-20 pb-40 overflow-x-hidden overflow-y-hidden antialiased flex flex-col px-2 w-full max-w-[90%] lg:max-w-[1400px] mx-auto"
 >
 
-        <div className="max-w-7xl relative mx-auto py-20 md:py-35 px-4 w-full left-0 top-16">
+        <div className="max-w-7xl relative mx-auto py-20 md:py-35 px-4 w-full left-0 top-20">
           <h1 className="text-2xl md:text-7xl font-bold dark:text-white">{heroTitle}</h1>
           <p className="max-w-2xl text-base font-semibold md:text-2xl mt-0 dark:text-neutral-200">
             {heroDescription}
