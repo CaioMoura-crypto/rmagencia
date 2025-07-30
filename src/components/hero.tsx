@@ -111,24 +111,24 @@ export const Hero = ({ works, heroTitle, heroDescription }: HeroProps) => {
       </button>
 
       {/* Seta Esquerda – responsiva */}
-      {expandedIndex > 0 && (
-        <button
-          onClick={() => setExpandedIndex(expandedIndex - 1)}
-          className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white/60 z-10 transition-all opacity-60 hover:opacity-100 text-2xl md:text-4xl"
-        >
-          &#8592;
-        </button>
-      )}
+{expandedIndex > 0 && (
+  <button
+    onClick={() => setExpandedIndex(expandedIndex - 1)}
+    className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white/60 z-10 transition-all opacity-60 hover:opacity-100 text-2xl md:text-4xl w-12 h-12 flex items-center justify-center"
+  >
+    {"<"}
+  </button>
+)}
 
-      {/* Seta Direita – responsiva */}
-      {expandedIndex < works.length - 1 && (
-        <button
-          onClick={() => setExpandedIndex(expandedIndex + 1)}
-          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white/60 z-10 transition-all opacity-60 hover:opacity-100 text-2xl md:text-4xl"
-        >
-          &#8594;
-        </button>
-      )}
+{/* Seta Direita – responsiva */}
+{expandedIndex < works.length - 1 && (
+  <button
+    onClick={() => setExpandedIndex(expandedIndex + 1)}
+    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white/60 z-10 transition-all opacity-60 hover:opacity-100 text-2xl md:text-4xl w-12 h-12 flex items-center justify-center"
+  >
+    {">"}
+  </button>
+)}
     </div>
 
     <p className="text-white mt-4 text-center px-4">{works[expandedIndex].title}</p>
