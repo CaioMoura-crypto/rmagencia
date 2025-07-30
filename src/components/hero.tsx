@@ -90,47 +90,52 @@ export const Hero = ({ works, heroTitle, heroDescription }: HeroProps) => {
         </motion.div>
       </div>
 
-      {expandedIndex !== null && works[expandedIndex] && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50"
-          onClick={() => setExpandedIndex(null)}
+{expandedIndex !== null && works[expandedIndex] && (
+  <div
+    className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50"
+    onClick={() => setExpandedIndex(null)}
+  >
+    <div className="relative" onClick={(e) => e.stopPropagation()}>
+      <img
+        src={urlFor(works[expandedIndex].image!).url()}
+        alt={works[expandedIndex].title ?? ""}
+        className="max-w-[90vw] max-h-[90vh] rounded-xl shadow-2xl"
+      />
+
+      {/* Botão Fechar */}
+      <button
+        onClick={() => setExpandedIndex(null)}
+        className="absolute top-2 right-2 text-white text-3xl font-bold"
+      >
+        &times;
+      </button>
+
+      {/* Seta Esquerda – responsiva */}
+      {expandedIndex > 0 && (
+        <button
+          onClick={() => setExpandedIndex(expandedIndex - 1)}
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white/60 z-10 transition-all opacity-60 hover:opacity-100 text-2xl md:text-4xl"
         >
-          <div className="relative" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={urlFor(works[expandedIndex].image!).url()}
-              alt={works[expandedIndex].title ?? ""}
-              className="max-w-[90vw] max-h-[90vh] rounded-xl shadow-2xl"
-            />
-
-            <button
-              onClick={() => setExpandedIndex(null)}
-              className="absolute top-2 right-2 text-white text-3xl font-bold"
-            >
-              &times;
-            </button>
-
-            {expandedIndex > 0 && (
-              <button
-                onClick={() => setExpandedIndex(expandedIndex - 1)}
-                className="absolute left-[-3rem] top-1/2 transform -translate-y-1/2 text-white text-4xl"
-              >
-                &#8592;
-              </button>
-            )}
-
-            {expandedIndex < works.length - 1 && (
-              <button
-                onClick={() => setExpandedIndex(expandedIndex + 1)}
-                className="absolute right-[-3rem] top-1/2 transform -translate-y-1/2 text-white text-4xl"
-              >
-                &#8594;
-              </button>
-            )}
-          </div>
-
-          <p className="text-white mt-4">{works[expandedIndex].title}</p>
-        </div>
+          &#8592;
+        </button>
       )}
+
+      {/* Seta Direita – responsiva */}
+      {expandedIndex < works.length - 1 && (
+        <button
+          onClick={() => setExpandedIndex(expandedIndex + 1)}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white/60 z-10 transition-all opacity-60 hover:opacity-100 text-2xl md:text-4xl"
+        >
+          &#8594;
+        </button>
+      )}
+    </div>
+
+    <p className="text-white mt-4 text-center px-4">{works[expandedIndex].title}</p>
+  </div>
+)}
+
+
     </>
   );
 };
