@@ -16,9 +16,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="w-full px-4 mx-auto lg:max-w-[1600px]">
-
-
+          <div className="w-full px-4 mx-auto lg:max-w-[1600px] fixed">
             <ModeToggle />
           </div>
           {children}
